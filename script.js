@@ -51,7 +51,22 @@ const showProductUi = async (elementId) => {
 
 
     const data = await showProduct(elementId);
+    console.log(data)
     const innerData = data.data;
+    console.log(innerData)
+    function compare(a, b) {
+        if (a.total_view < b.total_view) {
+            return 1;
+        }
+        if (a.total_view > b.total_view) {
+            return -1;
+        }
+        return 0;
+    }
+
+    innerData.sort(compare);
+    console.log(innerData)
+
     const productContainer = document.getElementById('product-container');
     productContainer.innerHTML = '';
 
