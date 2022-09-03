@@ -21,7 +21,7 @@ const setCategory = async () => {
         const li = document.createElement('li');
 
         li.innerHTML = `
-        <a class="inline-block px-3 py-6  font-medium" onclick="showProductUi('${element.category_id}')" href="#">${element.category_name}</a>
+        <a class="inline-block px-3 py-6  font-medium text-gray-500" onclick="showProductUi('${element.category_id}')" href="#">${element.category_name}</a>
         `
         cetagoryContainer.append(li);
     });
@@ -32,7 +32,8 @@ setCategory();
 
 // show Product By category 
 const showProduct = async (elementId) => {
-    const url = `https://openapi.programming-hero.com/api/news/category/${elementId}`
+    const url = `https://openapi.programming-hero.com/api/news/category/${elementId}`;
+
     try {
         const res = await fetch(url);
         const data = await res.json();
@@ -67,23 +68,24 @@ const showProductUi = async (elementId) => {
     innerData.sort(compare);
 
     const productContainer = document.getElementById('product-container');
-    productContainer.innerHTML = '';
 
     const countCatagory = document.getElementById('count-catagory');
+    const warningId = document.getElementById('empty-warning');
+    // warningId.textContent = "";
+    productContainer.innerHTML = '';
     const catagorysArr = [];
+    // console.log(catagorysArr)
+
+
 
 
     innerData.forEach(id => {
         const { title, details, author, total_view, _id, thumbnail_url
         } = id;
         const published = author.published_date;
-        // console.log(id)
 
-        catagorysArr.push(innerData.length);
-        countCatagory.innerHTML = `
-        <h3 class="p-4 bg-slate-200 rounded font-semibold text-2xl">${catagorysArr.length} items found for This category </h3>
-        `
 
+        // create Dinamic News card
         const div = document.createElement('div');
         div.innerHTML = `
         <div class="card lg:card-side bg-base-100 shadow-xl my-5">
@@ -104,19 +106,37 @@ const showProductUi = async (elementId) => {
                             <i class="fa-regular fa-eye"></i>
                             <span class="font-semibold">${total_view !== null ? total_view : "No data found"}</span>
                         </div>
-                    <label for="my-modal-3" class="btn modal-btn hover:bg-sky-500" onclick="details('${_id}')">Details</label>
+                    <label for="my-modal-3" class="btn modal-btn hover:bg-sky-500 hover:ring-2" onclick="details('${_id}')">Details</label>
                 </div>
             </div>
         </div>
         `
         productContainer.appendChild(div);
+
+        //Show catagory item number
+        catagorysArr.push(innerData.length);
+        countCatagory.innerHTML = `
+    <h3 class="p-4 bg-slate-200 rounded font-semibold text-2xl">${catagorysArr.length} items found for This category </h3>
+    `
     });
+    //no Data found
+    if (catagorysArr.length === 0) {
+        warningId.classList.remove('hidden');
+        countCatagory.innerHTML = `
+        <h3 class="p-4 bg-slate-200 rounded font-semibold text-2xl">0 items found for This category </h3>
+        `
+    }
+    else {
+        warningId.classList.add('hidden');
+    }
     spiner.classList.add('hidden');
 }
 
 
 // details Api 
 const details = async (news_id) => {
+    const spiner = document.getElementById('spiner');
+    spiner.classList.remove('hidden');
     const url = `https://openapi.programming-hero.com/api/news/${news_id}`;
     const res = await fetch(url);
     const data = await res.json();
@@ -152,8 +172,8 @@ const details = async (news_id) => {
         </div>
     </div>`
 
-
+    spiner.classList.add('hidden');
 }
-showProductUi()
+// showProductUi()
 
 
