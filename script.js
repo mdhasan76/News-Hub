@@ -21,7 +21,7 @@ const setCategory = async () => {
         const li = document.createElement('li');
 
         li.innerHTML = `
-        <a class="p-3 font-medium" onclick="showProductUi('${element.category_id}')" href="#">${element.category_name}</a>
+        <a class="inline-block px-3 py-6  font-medium" onclick="showProductUi('${element.category_id}')" href="#">${element.category_name}</a>
         `
         cetagoryContainer.append(li);
     });
