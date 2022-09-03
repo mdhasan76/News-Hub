@@ -15,22 +15,10 @@ const setCategory = async () => {
     const data = await loadedCategoryMenu();
     const cetagoryContainer = document.getElementById('cetagory-container');
 
-    // const countCatagory = document.getElementById('count-catagory');
-    // const catagorysArr = [];
-
-    // catagorysArr.push(innerData.length);
-    // countCatagory.innerHTML = `
-    // <h3 class="p-4 font-semibold text-2xl">${catagorysArr.length} items found for category ${console.log()} </h3>
-    // `
 
     data.forEach(element => {
-        // console.log(element)
+
         const li = document.createElement('li');
-        // catagorysArr.push(element.);
-        // console.log(catagorysArr)
-        // countCatagory.innerHTML = `
-        // <h3 class="p-4 font-semibold text-2xl">${catagorysArr.length} items found for category Entertainment </h3>
-        // `
 
         li.innerHTML = `
         <a class="p-3 font-medium" onclick="showProductUi('${element.category_id}')" href="#">${element.category_name}</a>
@@ -64,14 +52,7 @@ const showProductUi = async (elementId) => {
 
     const countCatagory = document.getElementById('count-catagory');
     const catagorysArr = [];
-    // console.log(innerData);
 
-    // const cetagoryName = await loadedCategoryMenu();
-
-    // sort 
-    const sortArr = [];
-    const sort = document.getElementById('sort');
-    console.log(sortArr)
 
     innerData.forEach(id => {
         const { title, details, author, total_view, _id } = id;
@@ -82,9 +63,6 @@ const showProductUi = async (elementId) => {
         countCatagory.innerHTML = `
         <h3 class="p-4 bg-slate-200 rounded font-semibold text-2xl">${catagorysArr.length} items found for This category </h3>
         `
-
-        //Sorting Data
-        sortArr.push(total_view);
 
         const div = document.createElement('div');
         div.innerHTML = `
@@ -128,9 +106,7 @@ const details = async (news_id) => {
     const { details, rating, total_view } = data.data[0];
     const modalTitle = document.getElementById('modal-title');
     const modaltext = document.getElementById('modal-text');
-    // modalTitle.innerText = `${data.data[0].title}`;
-    // modaltext.innerText = `${dataId}`;
-    // const div = document.createElement('div');
+
     modalTitle.innerHTML = `
     <img src="${data.data[0].image_url}">
     <p class=py-5>${data.data[0].title}</p>

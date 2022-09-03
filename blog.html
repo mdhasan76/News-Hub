@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <!-- tailwind link  -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-50">
+    <main class="w-9/12 mx-auto">
+        <article class="bg-teal-300 p-10 text-xl">
+            <h3 class="font-medium text-3xl pt-5">The Difference Between Regular Functions and Arrow Functions?</h3>
+            <p class="py-3 leading-8">Regular functions created using function declarations or expressions are
+                constructible and
+                callable. Since regular functions are constructible, they can be called using the new keyword. However,
+                the arrow functions are only callable and not constructible, i.e arrow functions can never be used as
+                constructor functions. <br>
+                There are two major benefits of using Arrow functions. One is that it's a shorter syntax and thus
+                requires less code. The main benefit is that it removes the several pain points associated with the this
+                operator. <br>
+                But when we write regular function it is too many long ling code we write for simple expression. </p>
+        </article>
+        <article class="bg-blue-300 p-10 text-xl">
+            <h3 class="font-medium text-3xl pt-5">What is the Difference between var, let and const keywords in
+                JavaScript?</h3>
+            <p class="py-3 leading-8">
+                <span class="font-semibold text-2xl">Var:</span> The var is the oldest keyword to declare a variable in
+                JavaScript. it can be re-decleared , re-assign etc. var is global scope and function scope. <br>
+                <span class="font-semibold text-2xl">Let:</span> The let keyword is an improved version of the var
+                keyword. The scope of a let variable is only block scoped. It can’t be accessible outside the
+                particular block ({block}). <br>
+                <span class="font-semibold text-2xl">Conat:</span> The const keyword has all the properties that are the
+                same
+                as the let keyword, except the user cannot update it. When users declare a const variable, they need
+                to initialize it, otherwise, it returns an error. The user cannot update the const variable once it
+                is declared.
+
+            </p>
+        </article>
+        <article class="bg-violet-300 p-10 text-xl">
+            <h3 class="font-medium text-3xl pt-5">Why should we use Template Literals string?</h3>
+            <p class="py-3">They are unique because they provide a lot of features that normal strings built with quotes
+                do not, in particular:
+            <ul class="list-decimal px-5 leading-8">
+                <li>they offer a great syntax to define multiline strings</li>
+                <li>We can easly move on new line . without any hassle</li>
+                <li>It provide us to declear variable in string with $ sing</li>
+                <li>They allow you to create DSLs with template tags (DSL means domain specific language, and it’s for
+                    example used in React by Styled Components, to define CSS for a component)</li>
+                <li>Inside the ${} you can add anything, even expressions</li>
+                </ol>
+
+                they offer a great syntax to define multiline strings
+                they provide an easy way to interpolate variables and expressions in strings
+                they allow you to create DSLs with template tags (DSL means domain specific language, and it’s for
+                example
+                used in React by Styled Components, to define CSS for a component)</p>
+        </article>
+    </main>
+</body>
+
+</html>
