@@ -18,10 +18,13 @@ const setCategory = async () => {
     // const countCatagory = document.getElementById('count-catagory');
     // const catagorysArr = [];
 
-
+    // catagorysArr.push(innerData.length);
+    // countCatagory.innerHTML = `
+    // <h3 class="p-4 font-semibold text-2xl">${catagorysArr.length} items found for category ${console.log()} </h3>
+    // `
 
     data.forEach(element => {
-        console.log(element)
+        // console.log(element)
         const li = document.createElement('li');
         // catagorysArr.push(element.);
         // console.log(catagorysArr)
@@ -63,6 +66,13 @@ const showProductUi = async (elementId) => {
     const catagorysArr = [];
     // console.log(innerData);
 
+    // const cetagoryName = await loadedCategoryMenu();
+
+    // sort 
+    const sortArr = [];
+    const sort = document.getElementById('sort');
+    console.log(sortArr)
+
     innerData.forEach(id => {
         const { title, details, author, total_view, _id } = id;
         const published = author.published_date;
@@ -70,9 +80,11 @@ const showProductUi = async (elementId) => {
 
         catagorysArr.push(innerData.length);
         countCatagory.innerHTML = `
-        <h3 class="p-4 font-semibold text-2xl">${catagorysArr.length} items found for category ${innerData.category_name} </h3>
+        <h3 class="p-4 bg-slate-200 rounded font-semibold text-2xl">${catagorysArr.length} items found for This category </h3>
         `
 
+        //Sorting Data
+        sortArr.push(total_view);
 
         const div = document.createElement('div');
         div.innerHTML = `
@@ -100,7 +112,7 @@ const showProductUi = async (elementId) => {
         </div>
         `
         productContainer.appendChild(div);
-    })
+    });
     spiner.classList.add('hidden');
 }
 
