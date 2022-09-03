@@ -60,9 +60,10 @@ const showProductUi = async (elementId) => {
 
 
     innerData.forEach(id => {
-        const { title, details, author, total_view, _id } = id;
+        const { title, details, author, total_view, _id, thumbnail_url
+        } = id;
         const published = author.published_date;
-        // console.log(author)
+        // console.log(id)
 
         catagorysArr.push(innerData.length);
         countCatagory.innerHTML = `
@@ -73,21 +74,21 @@ const showProductUi = async (elementId) => {
         div.innerHTML = `
         <div class="card lg:card-side bg-base-100 shadow-xl my-5">
             <figure>
-                <img class='img-sizing' src=${id.image_url} alt="Album">
+                <img class='img-sizing' src=${thumbnail_url} alt="Album">
             </figure>
             <div class="card-body">
                 <h2 class="card-title">${title.length > 100 ? title.slice(0, 100) : title}...</h2>
                 <p class="py-4">${details.length > 120 ? details.slice(0, 120) : details}...</p>
                 <div class="card-actions justify-between items-center">
-                    <div class="flex items-center">
+                    <div class="flex items-center flex-wrap">
                         <div><img src=${author.img} class="h-8 w-8 rounded-full" alt=""></div>
                         <div class="pl-2">
-                            <h3 class="font-medium"> ${author.name}</h3>
+                            <h3 class="font-medium"> ${author.name === null ? "NO data" : author.name}</h3>
                             <p class="text-sm">${published === null ? "No Date" : published.slice(0, 10)}</p></div>
                         </div>
                         <div>
                             <i class="fa-regular fa-eye"></i>
-                            <span>${total_view}</span>
+                            <span class="font-semibold">${total_view !== null ? total_view : "No data found"}</span>
                         </div>
                     <label for="my-modal-3" class="btn modal-btn" onclick="details('${_id}')">Details</label>
                 </div>
