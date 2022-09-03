@@ -33,9 +33,14 @@ setCategory();
 // show Product By category 
 const showProduct = async (elementId) => {
     const url = `https://openapi.programming-hero.com/api/news/category/${elementId}`
-    const res = await fetch(url);
-    const data = await res.json();
-    return data;
+    try {
+        const res = await fetch(url);
+        const data = await res.json();
+        return data;
+    }
+    catch (error) {
+        console.log(error)
+    }
 }
 
 const showProductUi = async (elementId) => {
