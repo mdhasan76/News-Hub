@@ -47,9 +47,13 @@ const showProduct = async (elementId) => {
     return data;
 }
 
-
 const showProductUi = async (elementId) => {
-    // console.log(elementId);
+
+    //spiner part
+    const spiner = document.getElementById('spiner');
+    spiner.classList.remove('hidden');
+
+
     const data = await showProduct(elementId);
     const innerData = data.data;
     const productContainer = document.getElementById('product-container');
@@ -97,8 +101,7 @@ const showProductUi = async (elementId) => {
         `
         productContainer.appendChild(div);
     })
-
-    console.log(data)
+    spiner.classList.add('hidden');
 }
 
 
