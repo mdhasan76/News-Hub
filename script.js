@@ -51,7 +51,6 @@ const showProductUi = async (elementId) => {
 
 
     const data = await showProduct(elementId);
-    console.log(data)
     const innerData = data.data;
 
     //sort data
@@ -92,8 +91,8 @@ const showProductUi = async (elementId) => {
                 <img class='img-sizing' src=${thumbnail_url} alt="Album">
             </figure>
             <div class="card-body">
-                <h2 class="card-title">${title.length > 100 ? title.slice(0, 100) : title}...</h2>
-                <p class="py-4">${details.length > 120 ? details.slice(0, 120) : details}...</p>
+                <h2 class="card-title">${title.length > 150 ? title.slice(0, 150) : title}...</h2>
+                <p class="py-4">${details.length > 180 ? details.slice(0, 180) : details}...</p>
                 <div class="card-actions justify-between items-center">
                     <div class="flex items-center flex-wrap">
                         <div><img src=${author.img} class="h-8 w-8 rounded-full" alt=""></div>
@@ -105,7 +104,7 @@ const showProductUi = async (elementId) => {
                             <i class="fa-regular fa-eye"></i>
                             <span class="font-semibold">${total_view !== null ? total_view : "No data found"}</span>
                         </div>
-                    <label for="my-modal-3" class="btn modal-btn" onclick="details('${_id}')">Details</label>
+                    <label for="my-modal-3" class="btn modal-btn hover:bg-sky-500" onclick="details('${_id}')">Details</label>
                 </div>
             </div>
         </div>
@@ -117,7 +116,6 @@ const showProductUi = async (elementId) => {
 
 
 // details Api 
-
 const details = async (news_id) => {
     const url = `https://openapi.programming-hero.com/api/news/${news_id}`;
     const res = await fetch(url);
